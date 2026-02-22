@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e8e0d8;
+  --card: #141414;
+  --card-foreground: #e8e0d8;
+  --popover: #1a1a1a;
+  --popover-foreground: #e8e0d8;
+  --primary: #c2703e;
+  --primary-foreground: #0a0a0a;
+  --secondary: #1e1e1e;
+  --secondary-foreground: #c9b99a;
+  --muted: #1a1a1a;
+  --muted-foreground: #7a7268;
+  --accent: #c2703e;
+  --accent-foreground: #0a0a0a;
+  --destructive: #8b3a3a;
+  --destructive-foreground: #e8e0d8;
+  --border: #2a2520;
+  --input: #1e1a16;
+  --ring: #c2703e;
+  --chart-1: #c2703e;
+  --chart-2: #8b6344;
+  --chart-3: #5c4a3a;
+  --chart-4: #c9b99a;
+  --chart-5: #7a7268;
+  --radius: 0.25rem;
+  --warm: #c2703e;
+  --warm-muted: #8b6344;
+  --warm-light: #d4915f;
+  --surface: #111111;
+  --surface-hover: #1a1714;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist), 'Geist', 'Geist Fallback';
+  --font-mono: var(--font-geist-mono), 'Geist Mono', 'Geist Mono Fallback';
+  --font-serif: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-warm: var(--warm);
+  --color-warm-muted: var(--warm-muted);
+  --color-warm-light: var(--warm-light);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2520;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c2703e;
+}
+
+/* Animated gradient background */
+@keyframes bgShift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.memoria-bg {
+  background: radial-gradient(ellipse at 20% 50%, #1a1510 0%, #0a0a0a 50%),
+              radial-gradient(ellipse at 80% 20%, #14100c 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 80%, #0f0d0a 0%, transparent 50%),
+              #0a0a0a;
+  background-size: 200% 200%;
+  animation: bgShift 20s ease-in-out infinite;
+}
+
+/* Rich text editor styles */
+.rich-text-content strong { font-weight: 700; }
+.rich-text-content em { font-style: italic; }
+.rich-text-content u { text-decoration: underline; }
+.rich-text-content h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+.rich-text-content h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+.rich-text-content ul { list-style-type: disc; padding-left: 1.5rem; }
+.rich-text-content ol { list-style-type: decimal; padding-left: 1.5rem; }
+.rich-text-content blockquote {
+  border-left: 2px solid #c2703e;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #c9b99a;
+}
